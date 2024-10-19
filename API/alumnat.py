@@ -3,9 +3,12 @@ from fastapi import HTTPException
 
 def read():
     conn = db_client()
+    if isinstance(conn, dict) and conn.get("status") == -1:
+        return conn  # Return the error from db_client
+
     try:
         cur = conn.cursor()
-        # Ensure all 5 fields (NomAlumne, Cicle, Curs, Grup, DescAula) are selected
+        # Only select the required fields
         cur.execute(
             "SELECT NomAlumne, Cicle, Curs, Grup, DescAula "
             "FROM alumne JOIN aula ON alumne.IdAula = aula.IdAula"
@@ -18,7 +21,6 @@ def read():
             conn.close()
 
     return alumnes
-
 
 
 

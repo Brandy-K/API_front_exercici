@@ -80,4 +80,3 @@ def update_alumne(id: int, alumne: alumn):
 def read_aules():
     db_data = aula.read_aules()
     return aula.aulas_schema(db_data)
-

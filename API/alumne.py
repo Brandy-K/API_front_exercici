@@ -7,9 +7,8 @@ def alumne_schema(fetchAlumnes) -> dict:
         "Cicle": fetchAlumnes[1],
         "Curs": fetchAlumnes[2],
         "Grup": fetchAlumnes[3],
-        "DescAula": fetchAlumnes[4],
+        "DescAula": fetchAlumnes[4],  # Ensure this field exists in the fetchAlumnes result
     }
-
 
 # Schema for a list of alumne (students)
 def alumnes_schema(fetchAlumnes) -> List[dict]:
