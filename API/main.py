@@ -31,14 +31,14 @@ def read_alumnes():
     
       # Convert the raw data to schema
 
-@app.get("/alumne/{id}", response_model=alumn)
+@app.get("/alumne/{IdAlumne}", response_model=tablaAlumne)
 def read_alumne_id(IdAlumne: int):
    # alumn = Alumnat.read_id(IdAlumne)
     if alumnat.read_id(IdAlumne) is not None:
-        alumn =  alumne.alumne_schema(alumnat.read_id(IdAlumne))
+        tablaAlumne =  alumne.alumne_schema(alumnat.read_id(IdAlumne))
     else:
         raise HTTPException(status_code=404, detail="Item not found")
-    return alumn
+    return tablaAlumne
 
 @app.post("/alumne/add", response_model=dict)
 def add_alumne(alumne: alumn):
